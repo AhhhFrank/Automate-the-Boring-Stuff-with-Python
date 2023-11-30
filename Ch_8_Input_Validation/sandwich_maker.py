@@ -57,14 +57,35 @@ def cost(bread, protein, cheese, extras, sandos):
 						'chicken': 1.0, 'turkey': 0.75, 'ham': 1.25, 'tofu': 1.0,
 						'cheddar': 0.5, 'swiss': 0.5, 'mozzarella': 0.5,
 						'mayo': 0.5, 'mustard': 0.5, 'lettuce': 0.25, 'tomato': 0.75}
+	total_cost = 0.0
+	total_cost += ingredient_cost.get(bread)
+	total_cost += ingredient_cost.get(protein)
+	if cheese != 'no':
+		total_cost += ingredient_cost.get(cheese)
+	for stuff in extras:
+		total_cost += ingredient_cost.get(stuff)
+	total_cost = sandos * total_cost
+	return total_cost
+
+
+def ask_sandwhich():
+	sando_cost = cost(bread_type(), protein_type(), cheese(), condiment_and_toppings(), number_of_sandwhich())
+	return 'The total cost of your sandwhich order is $%s' % (sando_cost)
 
 
 def main():
-	#print(bread_type())
-	#print(protein_type())
-	#print(cheese())
-	#print(condiment_and_toppings())
-	print(number_of_sandwhich())
+	# bread = 'white'
+	# protein = 'chicken'
+	# cheese = 'cheddar'
+	# extras = []
+	# sandos = 1
+	# print(bread_type())
+	# print(protein_type())
+	# print(cheese())
+	# print(condiment_and_toppings())
+	# print(number_of_sandwhich())
+	# print(cost(bread, protein, cheese, extras, sandos))
+	print(ask_sandwhich())
 
 
 if __name__ == '__main__':
